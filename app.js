@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const helmet = require("helmet"); // secure headers
 const compression = require("compression"); // compress assets
 const morgan = require("morgan"); // logging
+const cors = require('cors')
 const { MONGODB_URI, MONGODB_URI_ABACK } = require("./config/AppConst");
 
 /**
@@ -41,6 +42,7 @@ mongoose
  * Middlewares
  */
 
+ app.use(cors())
 app.use(helmet());
 app.use(compression());
 app.use(bodyParser.json());
