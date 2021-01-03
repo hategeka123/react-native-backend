@@ -23,11 +23,9 @@ const userSchema = new Schema({
   phone: {
     type: String,
   },
-  lat: {
-    type: Number,
-  },
-  lng: {
-    type: Number,
+  role:{
+    type:String,
+    default:'customer'
   },
   cart: [
     {

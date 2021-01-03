@@ -23,7 +23,7 @@ router.post(
     body("password")
       .trim()
       .isLength({ min: 6 })
-      .withMessage("Your password whould have to atlest 6 Character long"),
+      .withMessage("Your password should have to atlest 6 Character long"),
   ],
   userController.onSignup
 );

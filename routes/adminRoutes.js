@@ -12,6 +12,10 @@ router.post("/add-restaurant", adminController.addRestaurant);
 router.post("/add-food/:id", adminController.addFood);
 
 router.get("/view-restaurants", adminController.viewAllRestaurant);
+router.get("/all-users", auth, adminController.getAllUsers);
+router.get("/all-users/:id",auth, adminController.singleUser);
+router.patch("/all-users/:id",auth, adminController.addSeller);
+router.delete("/user/:id", auth, adminController.deleteUser);
 
 router.use(AppError.onInvalidEndpoint);
 

@@ -6,6 +6,7 @@ const helmet = require("helmet"); // secure headers
 const compression = require("compression"); // compress assets
 const morgan = require("morgan"); // logging
 const cors = require('cors')
+const fileupload = require('express-fileupload')
 const { MONGODB_URI, MONGODB_URI_ABACK } = require("./config/AppConst");
 
 /**
@@ -16,6 +17,7 @@ const AppError = require("./controllers/errorController");
 /**
  * Routes
  */
+const sellerRouter = require("./routes/sellerRoutes")
 const userRoutes = require("./routes/userRoutes");
 const foodRoutes = require("./routes/foodsRoute");
 const adminRoutes = require("./routes/adminRoutes");
@@ -47,8 +49,10 @@ app.use(helmet());
 app.use(compression());
 app.use(bodyParser.json());
 app.use("/images", express.static(path.join(__dirname, "images")));
+app.use(fileupload({useTempFiles:true}))
 
 app.use("/user", userRoutes); // --- User Acccess
+app.use("/seller", sellerRouter); // --- User Acccess
 app.use("/food", foodRoutes); // -- Product Access
 app.use("/admin", adminRoutes); // --- Admin Access
 app.use(AppError.unAuthorised); // -- Error Handler

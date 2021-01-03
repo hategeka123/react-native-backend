@@ -18,7 +18,7 @@ module.exports = (req, res, next) => {
     User.findById({_id:userId})
       .then((user) => {
         req.user = user;
-        if(user.role !== "admin") return res.json({message:"Only admin is allowed"})
+        if(user.role !== "seller") return res.json({message:"Only seller is allowed"})
         next();
       })
       .catch((err) =>
