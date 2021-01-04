@@ -49,7 +49,7 @@ router.post("/cart/:id", auth, userController.addToCart);
 
 router.get("/cart", auth, userController.getCart);
 
-router.get("/order", auth, userController.getOrder);
+router.get("/order", userController.getOrder);
 
 router.get("/order/:id", auth, userController.getSelectedOrder);
 
